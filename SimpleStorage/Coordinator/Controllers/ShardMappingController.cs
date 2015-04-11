@@ -1,16 +1,19 @@
-﻿using System.Web.Http;
+﻿using System;
+using System.Web.Http;
 
 namespace Coordinator.Controllers
 {
     public class ShardMappingController : ApiController
     {
+        private IConfiguration config;
         public ShardMappingController(IConfiguration configuration)
         {
+            config = configuration;
         }
 
         public int Get(string id)
         {
-            return 0;
+            return Math.Abs(id.GetHashCode()) % config.ShardCount;
         }
     }
 }
