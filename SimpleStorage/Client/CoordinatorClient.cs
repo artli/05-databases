@@ -16,7 +16,7 @@ namespace Client
 
         public int Get(string id)
         {
-            var requestUri = endpoint + "api/shardMapping/" + id;
+            var requestUri = endpoint + "/api/shardMapping/" + id;
             using (var client = new HttpClient())
             using (var response = client.GetAsync(requestUri).Result)
             {
